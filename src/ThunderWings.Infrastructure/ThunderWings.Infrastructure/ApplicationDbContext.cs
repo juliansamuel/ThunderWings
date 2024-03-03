@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using ThunderWings.Application.Data;
 using ThunderWings.Domain.Countries;
 using ThunderWings.Domain.Manufacturers;
 using ThunderWings.Domain.ProductRoles;
@@ -6,13 +8,15 @@ using ThunderWings.Domain.Products;
 
 namespace ThunderWings.Infrastructure;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWork
 {
-    public ApplicationDbContext(DbContextOptions options)
+    private readonly IPublisher _publisher;
+
+    public ApplicationDbContext(DbContextOptions options, IPublisher publisher)
         : base(options)
     {
+        _publisher = publisher;
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);

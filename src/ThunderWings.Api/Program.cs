@@ -1,4 +1,5 @@
 using ThunderWings.Api.Extensions;
+using ThunderWings.Application;
 using ThunderWings.Infrastructure;
 using Web.API.Extensions;
 
@@ -13,6 +14,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
