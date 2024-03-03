@@ -1,0 +1,26 @@
+[
+  {
+    "name": "F-22 Raptor",
+    "manufacturer": "Lockheed Martin",
+    "country": "United States of America",
+    "role": "Stealth air superiority fighter",
+    "topSpeed": 1498,
+    "price": 150000000
+  },
+  {
+    "name": "F-35 Lightning II",
+    "manufacturer": "Lockheed Martin",
+    "country": "United States of America",
+    "role": "Stealth Multirole fighter",
+    "topSpeed": 1200,
+    "price": 85000000
+  },
+  {
+    "name": "Sukhoi Su-35",
+    "manufacturer": "Sukhoi",
+    "country": "Russia",
+    "role": "Multirole fighter",
+    "topSpeed": 2400,
+    "price": 85000000
+  }
+]

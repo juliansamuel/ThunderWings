@@ -5,6 +5,10 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderWings.Api", "src\ThunderWings.Api\ThunderWings.Api.csproj", "{1AE98C60-C566-4C31-AB11-157656821EAD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderWings.Domain", "src\ThunderWings.Domain\ThunderWings.Domain.csproj", "{3FB9AA94-C597-4592-A72F-51C9817F223C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderWings.Infrastructure", "src\ThunderWings.Infrastructure\ThunderWings.Infrastructure\ThunderWings.Infrastructure.csproj", "{157F302D-03FF-48F4-87DA-F43CCE9D28B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1AE98C60-C566-4C31-AB11-157656821EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AE98C60-C566-4C31-AB11-157656821EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AE98C60-C566-4C31-AB11-157656821EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB9AA94-C597-4592-A72F-51C9817F223C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB9AA94-C597-4592-A72F-51C9817F223C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB9AA94-C597-4592-A72F-51C9817F223C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB9AA94-C597-4592-A72F-51C9817F223C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157F302D-03FF-48F4-87DA-F43CCE9D28B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157F302D-03FF-48F4-87DA-F43CCE9D28B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157F302D-03FF-48F4-87DA-F43CCE9D28B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157F302D-03FF-48F4-87DA-F43CCE9D28B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
