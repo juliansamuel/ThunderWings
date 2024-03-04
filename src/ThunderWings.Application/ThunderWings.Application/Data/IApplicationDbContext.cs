@@ -19,6 +19,5 @@ public interface IApplicationDbContext
 
     DatabaseFacade Database { get; }
 
-
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

@@ -50,6 +50,48 @@ namespace ThunderWings.Infrastructure.Migrations
                     b.ToTable("Manufacturers");
                 });
 
+            modelBuilder.Entity("ThunderWings.Domain.Orders.Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DatePlaced")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("ThunderWings.Domain.Orders.OrderItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderItems");
+                });
+
             modelBuilder.Entity("ThunderWings.Domain.ProductRoles.ProductRole", b =>
                 {
                     b.Property<Guid>("Id")
@@ -99,6 +141,23 @@ namespace ThunderWings.Infrastructure.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("ThunderWings.Domain.Orders.OrderItem", b =>
+                {
+                    b.HasOne("ThunderWings.Domain.Orders.Order", null)
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ThunderWings.Domain.Products.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ThunderWings.Domain.Products.Product", b =>
                 {
                     b.HasOne("ThunderWings.Domain.Countries.Country", "Country")
@@ -124,6 +183,11 @@ namespace ThunderWings.Infrastructure.Migrations
                     b.Navigation("Manufacturer");
 
                     b.Navigation("ProductRole");
+                });
+
+            modelBuilder.Entity("ThunderWings.Domain.Orders.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 #pragma warning restore 612, 618
         }

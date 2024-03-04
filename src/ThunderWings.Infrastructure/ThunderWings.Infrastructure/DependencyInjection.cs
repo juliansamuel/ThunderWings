@@ -2,6 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ThunderWings.Application.Data;
+using ThunderWings.Application.Orders;
+using ThunderWings.Domain.Orders;
+using ThunderWings.Domain.Products;
+using ThunderWings.Infrastructure.Repositories;
+using ThunderWings.Infrastructure.Services;
 
 namespace ThunderWings.Infrastructure;
 
@@ -18,7 +23,13 @@ public static class DependencyInjection
             sp.GetRequiredService<ApplicationDbContext>());
 
         services.AddScoped<IUnitOfWork>(sp =>
-            sp.GetRequiredService<ApplicationDbContext>());
+        sp.GetRequiredService<ApplicationDbContext>());
+
+        services.AddScoped<IOrderRepository, OrderRepository>();
+
+        services.AddScoped<IProductRepository, ProductRepository>();
+
+        services.AddScoped<IOrderReadService, OrderReadService>();
 
         return services;
     }

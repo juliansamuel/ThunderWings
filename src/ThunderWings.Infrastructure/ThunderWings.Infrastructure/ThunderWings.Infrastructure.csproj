@@ -17,4 +17,8 @@
     <ProjectReference Include="..\..\ThunderWings.Domain\ThunderWings.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
