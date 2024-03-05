@@ -1,6 +1,4 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
-using ThunderWings.Application.Data;
 using ThunderWings.Application.Products.Shared;
 
 namespace ThunderWings.Application.Products.Get;
@@ -8,29 +6,15 @@ namespace ThunderWings.Application.Products.Get;
 internal sealed class GetProductsQueryHandler
     : IRequestHandler<GetProductsQuery, IReadOnlyList<ProductResponse>>
 {
-    private readonly IApplicationDbContext _context;
+    private readonly IProductReadService _productReadService;
 
-    public GetProductsQueryHandler(IApplicationDbContext context)
+    public GetProductsQueryHandler(IProductReadService productReadService)
     {
-        _context = context;
+        _productReadService = productReadService;
     }
 
     public async Task<IReadOnlyList<ProductResponse>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
     {
-        var products = await _context
-            .Products
-            .Include(p => p.Country)
-            .Include(p => p.Manufacturer)
-            .Include(p => p.ProductRole)
-            .Select(p => new ProductResponse(
-                p.Id.Value,
-                p.Name,
-                p.Country.Name,
-                p.Manufacturer.Name,
-                p.ProductRole.Name,
-                p.TopSpeed,
-                p.Price))
-            .ToListAsync(cancellationToken);
-        return products;
+        return await _productReadService.GetAsync(cancellationToken);
     }
 }

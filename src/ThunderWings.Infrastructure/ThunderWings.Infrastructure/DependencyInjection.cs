@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ThunderWings.Application.Data;
 using ThunderWings.Application.Orders;
+using ThunderWings.Application.Products;
 using ThunderWings.Domain.Orders;
 using ThunderWings.Domain.Products;
 using ThunderWings.Infrastructure.Repositories;
@@ -30,6 +31,8 @@ public static class DependencyInjection
         services.AddScoped<IProductRepository, ProductRepository>();
 
         services.AddScoped<IOrderReadService, OrderReadService>();
+
+        services.AddScoped<IProductReadService, ProductReadService>();
 
         return services;
     }
