@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using ThunderWings.Application.Data;
 using ThunderWings.Application.Orders.GetOrder;
 using ThunderWings.Domain.Orders;
 
@@ -8,11 +9,13 @@ internal sealed class PlaceOrderCommandHandler : IRequestHandler<PlaceOrderComma
 {
     private readonly IOrderRepository _orderRepository;
     private readonly IOrderReadService _orderReadService;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public PlaceOrderCommandHandler(IOrderRepository orderRepository, IOrderReadService orderReadService)
+    public PlaceOrderCommandHandler(IOrderRepository orderRepository, IOrderReadService orderReadService, IUnitOfWork unitOfWork)
     {
         _orderRepository = orderRepository;
         _orderReadService = orderReadService;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<OrderResponse?> Handle(PlaceOrderCommand request, CancellationToken cancellationToken)
@@ -26,6 +29,8 @@ internal sealed class PlaceOrderCommandHandler : IRequestHandler<PlaceOrderComma
 
         order.PlaceOrder();
         _orderRepository.Update(order);
+
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return await _orderReadService.GetByIdAsync(order.Id);
     }
