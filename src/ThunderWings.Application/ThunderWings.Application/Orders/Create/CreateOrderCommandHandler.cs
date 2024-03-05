@@ -19,21 +19,4 @@ internal sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderCom
 
         _orderRepository.Add(order);
     }
-
-    //public async Task Handle2(CreateOrderCommand request, CancellationToken cancellationToken)
-    //{
-    //    var customer = await _customerRepository.GetByIdAsync(
-    //        new CustomerId(request.CustomerId));
-
-    //    if (customer is null)
-    //    {
-    //        return;
-    //    }
-
-    //    var order = Order.Create(customer.Id);
-
-    //    _orderRepository.Add(order);
-
-    //    _orderSummaryRepository.Add(new OrderSummary(order.Id.Value, customer.Id.Value, 0));
-    //}
 }

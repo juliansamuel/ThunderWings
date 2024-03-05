@@ -4,7 +4,7 @@ using ThunderWings.Domain.Products;
 
 namespace ThunderWings.Application.Orders.AddOrderItem;
 
-internal sealed class AddOrderItemCommandHandler : IRequestHandler<AddOrderItemCommand>
+internal sealed class AddOrderItemCommandHandler : IRequestHandler<AddOrderItemCommand, AddOrderItemResponse>
 {
     private readonly IOrderRepository _orderRepository;
     private readonly IProductRepository _productRepository;
@@ -15,7 +15,7 @@ internal sealed class AddOrderItemCommandHandler : IRequestHandler<AddOrderItemC
         _productRepository = productRepository;
     }
 
-    public async Task Handle(AddOrderItemCommand request, CancellationToken cancellationToken)
+    public async Task<AddOrderItemResponse> Handle(AddOrderItemCommand request, CancellationToken cancellationToken)
     {
         Order order;
         if (request.OrderId is null)
@@ -35,7 +35,6 @@ internal sealed class AddOrderItemCommandHandler : IRequestHandler<AddOrderItemC
             }
         }
 
-        
         var product = await _productRepository.GetByIdAsync(request.ProductId);
         if (product is null)
         {
@@ -43,5 +42,7 @@ internal sealed class AddOrderItemCommandHandler : IRequestHandler<AddOrderItemC
         }
 
         order.AddOrderItem(request.ProductId, product.Price);
+
+        return new AddOrderItemResponse(order.Id.Value);
     }
 }

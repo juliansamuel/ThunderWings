@@ -15,7 +15,6 @@ internal sealed class GetOrderQueryHandler :
 
     public async Task<OrderResponse> Handle(GetOrderQuery request, CancellationToken cancellationToken)
     {
-
         var orderId = new OrderId(request.OrderId);
 
         var orderResponse = await _orderReadService.GetByIdAsync(orderId);

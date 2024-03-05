@@ -1,4 +1,5 @@
-﻿using ThunderWings.Domain.Products;
+﻿using MediatR;
+using ThunderWings.Domain.Products;
 
 namespace ThunderWings.Domain.Orders;
 
@@ -42,18 +43,16 @@ public class Order
 
     public void RemoveOrderItem(OrderItemId orderItemId)
     {
-        if (HasOneOrderItem())
-        {
-            return;
-        }
-
-        var orderItem = _orderItems.FirstOrDefault(li => li.Id == orderItemId);
+        var orderItem = _orderItems.FirstOrDefault(oi => oi.Id == orderItemId);
         if (orderItem is null)
         {
-            return;
+            throw new OrderItemNotFoundException(orderItemId);
         }
         _orderItems.Remove(orderItem);
     }
 
-    private bool HasOneOrderItem() => _orderItems.Count == 1;
+    public void PlaceOrder()
+    {
+        DatePlaced = DateTime.UtcNow;
+    }
 }

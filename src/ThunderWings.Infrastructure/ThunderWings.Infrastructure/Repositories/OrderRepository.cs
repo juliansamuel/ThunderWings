@@ -23,4 +23,9 @@ internal sealed class OrderRepository : IOrderRepository
     {
         _context.Orders.Add(order);
     }
+
+    public void Update(Order order)
+    {
+        _context.Orders.Update(order);
+    }
 }

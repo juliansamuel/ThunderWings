@@ -40,10 +40,4 @@ public class Product
     public decimal Price { get; private set; }
 
     public decimal TopSpeed { get; private set; }
-
-    public void Update(string name, decimal price)
-    {
-        Name = name;
-        Price = price;
-    }
 }

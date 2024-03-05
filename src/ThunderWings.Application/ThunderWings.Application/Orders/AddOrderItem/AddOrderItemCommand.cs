@@ -5,6 +5,6 @@ namespace ThunderWings.Application.Orders.AddOrderItem;
 
 public record AddOrderItemCommand(
     Guid? OrderId,
-    ProductId ProductId) : IRequest;
+    ProductId ProductId) : IRequest<AddOrderItemResponse>;
 
-public record AddOrderItemRequest(Guid? OrderId, Guid ProductId);
+public record AddOrderItemRequest(Guid? OrderId, Guid ProductId) : IRequest<AddOrderItemResponse>;

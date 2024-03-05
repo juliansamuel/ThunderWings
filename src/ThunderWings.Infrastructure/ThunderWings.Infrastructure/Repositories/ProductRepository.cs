@@ -17,19 +17,4 @@ internal sealed class ProductRepository : IProductRepository
         return _context.Products
             .SingleOrDefaultAsync(p => p.Id == id);
     }
-
-    public void Add(Product product)
-    {
-        _context.Products.Add(product);
-    }
-
-    public void Update(Product product)
-    {
-        _context.Products.Update(product);
-    }
-
-    public void Remove(Product product)
-    {
-        _context.Products.Remove(product);
-    }
 }

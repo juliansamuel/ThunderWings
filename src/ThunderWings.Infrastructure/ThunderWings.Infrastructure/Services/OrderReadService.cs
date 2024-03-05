@@ -21,6 +21,8 @@ internal sealed class OrderReadService : IOrderReadService
             .Where(o => o.Id == id)
             .Select(o => new OrderResponse(
                 o.Id.Value,
+                o.DateCreated,
+                o.DatePlaced,
                 o.OrderItems.Sum(oi => oi.Price),
                 o.OrderItems
                     .Select(oi => new OrderItemResponse(

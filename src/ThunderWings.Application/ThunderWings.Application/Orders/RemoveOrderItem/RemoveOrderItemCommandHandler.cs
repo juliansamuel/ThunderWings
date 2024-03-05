@@ -18,7 +18,7 @@ internal sealed class RemoveOrderItemCommandHandler : IRequestHandler<RemoveOrde
 
         if (order is null)
         {
-            return;
+            throw new OrderNotFoundException(request.OrderId);
         }
 
         order.RemoveOrderItem(request.OrderItemId);
