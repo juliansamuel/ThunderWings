@@ -28,7 +28,9 @@ internal sealed class OrderReadService : IOrderReadService
                     .Select(oi => new OrderItemResponse(
                         oi.Id.Value, 
                         oi.Product.Name, 
-                        oi.Price))
+                        oi.Price,
+                        1,
+                        oi.DateCreated))
                     .ToList()))
             .FirstOrDefaultAsync();
 
