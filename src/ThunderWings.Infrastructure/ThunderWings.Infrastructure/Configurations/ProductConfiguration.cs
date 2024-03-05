@@ -14,6 +14,9 @@ internal class ProductConfiguration : IEntityTypeConfiguration<Product>
             productId => productId.Value,
             value => new ProductId(value));
 
+        builder.Property(p => p.Name)
+            .HasMaxLength(200);
+
         builder.Property(p => p.Price)
             .HasColumnType("decimal(18,2)");
 

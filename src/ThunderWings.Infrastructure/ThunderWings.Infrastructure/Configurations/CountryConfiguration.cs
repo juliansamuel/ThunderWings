@@ -13,5 +13,8 @@ internal class CountryConfiguration : IEntityTypeConfiguration<Country>
         builder.Property(c => c.Id).HasConversion(
             countryId => countryId.Value,
             value => new CountryId(value));
+
+        builder.Property(c => c.Name)
+            .HasMaxLength(200);
     }
 }

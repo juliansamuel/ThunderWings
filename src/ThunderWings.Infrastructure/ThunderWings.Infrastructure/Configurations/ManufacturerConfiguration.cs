@@ -13,5 +13,8 @@ internal class ManufacturerConfiguration : IEntityTypeConfiguration<Manufacturer
         builder.Property(m => m.Id).HasConversion(
             manufacturerId => manufacturerId.Value,
             value => new ManufacturerId(value));
+
+        builder.Property(m => m.Name)
+            .HasMaxLength(200);
     }
 }

@@ -13,5 +13,8 @@ internal class ProductRoleConfiguration : IEntityTypeConfiguration<ProductRole>
         builder.Property(pr => pr.Id).HasConversion(
             productRoleId => productRoleId.Value,
             value => new ProductRoleId(value));
+
+        builder.Property(pr => pr.Name)
+            .HasMaxLength(200);
     }
 }
