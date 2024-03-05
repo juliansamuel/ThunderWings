@@ -1,5 +1,4 @@
-﻿using MediatR;
-using ThunderWings.Domain.Products;
+﻿using ThunderWings.Domain.Products;
 
 namespace ThunderWings.Domain.Orders;
 

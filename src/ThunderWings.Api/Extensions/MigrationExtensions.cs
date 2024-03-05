@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ThunderWings.Infrastructure;
 
-namespace Web.API.Extensions;
+namespace ThunderWings.Api.Extensions;
 
 public static class MigrationExtensions
 {

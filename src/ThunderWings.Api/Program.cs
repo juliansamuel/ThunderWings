@@ -1,7 +1,6 @@
 using ThunderWings.Api.Extensions;
 using ThunderWings.Application;
 using ThunderWings.Infrastructure;
-using Web.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
